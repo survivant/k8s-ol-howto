@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: cheeses
@@ -11,13 +11,19 @@ spec:
       paths:
       - path: /stilton
         backend:
-          serviceName: stilton
-          servicePort: http
+          service:
+            name: stilton
+            port:
+              name: http
       - path: /cheddar
         backend:
-          serviceName: cheddar
-          servicePort: http
+          service:
+            name: cheddar
+            port:
+              name: http
       - path: /wensleydale
         backend:
-          serviceName: wensleydale
-          servicePort: http
+          service:
+            name: wensleydale
+            port:
+              name: http
